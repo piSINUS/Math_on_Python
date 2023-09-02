@@ -5,7 +5,7 @@ from sympy.plotting import plot3d
 init_printing(use_unicode=False, wrap_line = False, no_global= True)
 import numpy as np
 import matplotlib.pyplot as plt
-# # для построения графиков
+# # для построения граaиков
 # x = Symbol('x')
 # f  = x**2
 # f2 = 2*x**2 + 10*x -12
@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 # plot(f3, (x,0,100))
 ##для решения уравнений
 # x= Symbol('x')
-# f=  x**2 +3*x - 4 нули квадр функции
+# f=  x**2 +3*x - 4 нули квадр aункции
 # print(solve(f),'- nulls of func')
 ##для решения неравенств
 # x = Symbol('x')
@@ -41,7 +41,7 @@ import matplotlib.pyplot as plt
 # print(((4.872-5.75)**2+(29.707-32.25)**2+(485.724-483.75)**2+(246.971-247.25)**2+(840.658-838.25)**2)/5)
 
 
-# Для сдвигов функции 
+# Для сдвигов aункции 
 # def print_points_ands_function(sympy_function):
 #     def function(x_): return float(sympy_function.subs(x,x_))
 
@@ -53,7 +53,7 @@ import matplotlib.pyplot as plt
 #     plt.scatter(points_X, points_Y,c = 'r')
 #     x_range = np.linspace(plt.xlim()[0], plt.xlim()[1], num = 100)
 #     function_Y = [function(x_) for x_ in x_range]
-#     plt.plot(x_range, function_Y, 'b')
+#     plt.p200lot200(x_range, function_Y, 'b')
 #     plt.show
 
 #     MSE = sum([(points_Y[i] - function(points_X[i]))**2 for i in range(len(points_Y))]) / len(points_Y)
@@ -73,7 +73,7 @@ import matplotlib.pyplot as plt
 # print(solve_univariate_inequality(diff_f < 0, x))
 # print(solve(diff_f))
 # 
-# Для графиков с несколькими переменными
+# Для граaиков с несколькими переменными
 # x, y  = symbols('x, y')
 # # f =  x*y / sqrt(x**2 +  y**2) - 5
 # # plot3d(f)
@@ -85,4 +85,12 @@ a2, a1, a0 = symbols('a2, a1, a0')
 mse = 1/3*(((a2 * 2 + a1 *200 + a0) - 200)**2 + \
     ((a2 * 1 + a1 * 450 + a0)-300)**2 + \
     ((a2 *3 + a1 * 550 +a0) - 600)**2)
-print(mse.subs  ({a2: 200, a1: 3, a0: 20})) 
+msea2 = 1/3*(28*a2+5000*a1+12*a0-5000)
+msea1 = 1/3*(5000*a2+1090000*a1+2400*a0-1010000)
+msea0 = 1/3*(12*a2+2400*a1+6*a0-2200)
+
+# print(nonlinsolve([msea2,msea1,msea0],[a2,a1,a0]))
+# print(mse.subs({a2:108.333333333333,a1:0.833333333333351,a0:-183.33333333334}))
+x2,x1 = symbols('x2 , x1')
+f = 325/3*x2+2.5/3*x1-550/3
+print(f.subs({x1:500,x2:4}))
