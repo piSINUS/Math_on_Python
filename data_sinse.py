@@ -91,6 +91,13 @@ msea0 = 1/3*(12*a2+2400*a1+6*a0-2200)
 
 # print(nonlinsolve([msea2,msea1,msea0],[a2,a1,a0]))
 # print(mse.subs({a2:108.333333333333,a1:0.833333333333351,a0:-183.33333333334}))
-x2,x1 = symbols('x2 , x1')
-f = 325/3*x2+2.5/3*x1-550/3
-print(f.subs({x1:500,x2:4}))
+# x2,x1 = symbols('x2 , x1')
+# f = 325/3*x2+2.5/3*x1-550/3
+# print(f.subs({x1:500,x2:4}))
+
+#считаем производные
+
+x = Symbol('x')
+th = (exp(x) -  exp(-x)) / (exp(x)+exp(-x))
+print(diff(mse,a1))
+print(diff(th))
