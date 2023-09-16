@@ -2,9 +2,12 @@ from sympy import *
 from sympy.plotting import plot
 from sympy.solvers.inequalities import solve_univariate_inequality
 from sympy.plotting import plot3d
-init_printing(use_unicode=False, wrap_line = False, no_global= True)
 import numpy as np
 import matplotlib.pyplot as plt
+import numpy
+
+init_printing(use_unicode=False, wrap_line = False, no_global= True)
+
 # # для построения граaиков
 # x = Symbol('x')
 # f  = x**2
@@ -103,24 +106,57 @@ import matplotlib.pyplot as plt
 # print(diff(th))
 # 
 # Полный порядок нахождения MSE для чисел Масса(a1x1)1945,1495,1570,1520; Мощность двигателя(a2,x2) 560,340,343,431; Время разгона(y) 4,.4, 4.9, 5.2 ,?:
-# MSE = (sum(Истенное значение - наше предсказание)**2)колво эл
-a2, a1, a0 = symbols('a2, a1, a0')#1 задаём зависящие переменные
-x2,x1 = symbols('x2 , x1')
-mse = 1/3*(((a2 * 560 + a1 *1945 + a0) - 4.3)**2 + \
-    ((a2 * 340 + a1 * 1495 + a0) - 4.9)**2 + \
-    ((a2 *343 + a1 * 1570 +a0) - 5.2)**2)#2 Определяем MSE 
 
-mseDifA2 = diff(mse,a2)#Находим частные производные с помощью diff
-mseDifA1 = diff(mse,a1)
-mseDifA0 = diff(mse,a0)
+# MSE = (sum(Истенное значение - наше предсказание)**2)колво эл
+
+# a2, a1, a0 = symbols('a2, a1, a0')#1 задаём зависящие переменные
+# x2,x1 = symbols('x2 , x1')
+# mse = 1/3*(((a2 * 560 + a1 *1945 + a0) - 4.3)**2 + \
+#     ((a2 * 340 + a1 * 1495 + a0) - 4.9)**2 + \
+#     ((a2 *343 + a1 * 1570 +a0) - 5.2)**2)#2 Определяем MSE 
+
+# mseDifA2 = diff(mse,a2)#Находим частные производные с помощью diff
+# mseDifA1 = diff(mse,a1)
+# mseDifA0 = diff(mse,a0)
+
 #Теперь ищем точку минимума, необходимое условие экстремума: частные производные должны быть равны 0. Решаем систему уравнений с помощью nonlinsolve
-print(nonlinsolve([mseDifA2,mseDifA1,mseDifA0], [a2,a1,a0]))#получаем нули функции
+
+# print(nonlinsolve([mseDifA2,mseDifA1,mseDifA0], [a2,a1,a0]))#получаем нули функции
+
 # мы нашли значения параметров теперь подставляем их в MSE
-print(mse.subs({'a2':-0.0118811881188827, 'a1': 0.00447524752478956, 'a0' : 2.24910891085849}))
+
+# print(mse.subs({'a2':-0.0118811881188827, 'a1': 0.00447524752478956, 'a0' : 2.24910891085849}))
+
 #МЫ ПОЛУЧИЛИ ОЧЕНЬ МАЛЕНЬКОЕ мсе 1.10602959755638e-24, но для проверки поменяем знак у a1
-print(mse.subs({'a2':-0.0118811881188827, 'a1': -0.00447524752478956, 'a0' : 2.24910891085849}))
+
+# print(mse.subs({'a2':-0.0118811881188827, 'a1': -0.00447524752478956, 'a0' : 2.24910891085849}))
+
 #Мы получили гораздл большее MSE => мы нашли минима льную сейчас построим её 
-funckMse = -0.0118811881188827 * x2 + 0.00447524752478956*x1 + 2.24910891085849
+
+# funckMse = -0.0118811881188827 * x2 + 0.00447524752478956*x1 + 2.24910891085849
+
 # теперь можем предсказать время разгона авто с мощностью двигателя 431 лс и массой 1520 .Подставляем с помощью subs
-print(funckMse.subs({'x2': 431, 'x1': 1520}))
+
+# print(funckMse.subs({'x2': 431, 'x1': 1520}))
 # получаем время разгона 3.93069306930018
+
+a1, a2 = symbols('a1, a2')
+
+mse = 1/4*((a1*1 + 2*a2 - 5)**2 +\
+    (a1*5 + a2*3 -6)**2 + \
+    (a1 *2 + a2*4 -10)**2 +\
+    (a1*3 + a2*7 -8)**2)
+
+mseA1 =  diff(mse, a1)
+mseA2 = diff(mse, a2)
+print(f'{mseA1} \n {mseA2}')
+
+step = 0.01
+
+print(numpy.array([1,2])+numpy.array([2,3]))#операции со спискам как матрицы
+point = numpy.array([0.57, 0.91])
+grad = numpy.array([mseA1.subs({a1 : point[0], a2:point[1]}),mseA2.subs({a1 : point[0], a2:point[1]})])
+
+nextPoint  = point - step*grad
+print(nextPoint)
+print(mse.subs({a1: nextPoint[0], a2: nextPoint[1]}))
