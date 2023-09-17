@@ -137,7 +137,7 @@ init_printing(use_unicode=False, wrap_line = False, no_global= True)
 
 # теперь можем предсказать время разгона авто с мощностью двигателя 431 лс и массой 1520 .Подставляем с помощью subs
 
-# print(funckMse.subs({'x2': 431, 'x1': 1520}))
+# print(funckMse.subs({'x2': 431, 'x1' : 1520}))
 # получаем время разгона 3.93069306930018
 
 a1, a2 = symbols('a1, a2')
