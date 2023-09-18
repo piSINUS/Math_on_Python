@@ -163,10 +163,6 @@ init_printing(use_unicode=False, wrap_line = False, no_global= True)
 
 # Системы уравнений на примере сред бала по Ml
 
-koef1,koef2  = symbols('koef1,koef2')
+koef1,koef22  = symbols('koef1,koef2')
 X = Matrix([[4.1, 3.9], [4.7, 4.2]])
-X_augmented = Matrix([[4.1, 3.9,4.0], [4.7, 4.2,4.3]])
-Xlinsolve = linsolve(X_augmented, [koef1,koef2])
-print(Xlinsolve)
-a = Matrix([koef1,koef2])
-print(a)
+print(X)
