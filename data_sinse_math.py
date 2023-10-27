@@ -140,6 +140,8 @@ init_printing(use_unicode=False, wrap_line = False, no_global= True)
 # print(funckMse.subs({'x2': 431, 'x1' : 1520}))
 # получаем время разгона 3.93069306930018
 
+
+# Считаем градиент
 # a1, a2 = symbols('a1, a2')
 
 # mse = 1/4*((a1*1 + 2*a2 - 5)**2 +\
@@ -161,13 +163,15 @@ init_printing(use_unicode=False, wrap_line = False, no_global= True)
 # print(nextPoint)
 # print(mse.subs({a1: nextPoint[0], a2: nextPoint[1]}))
 
+
 # Системы уравнений на примере сред бала по Ml
 
-koef1,koef2  = symbols('koef1,koef2')
-X = Matrix([[4.1, 3.9], [4.7, 4.2]])
-X_augmented = Matrix([[4.1, 3.9,4.0], [4.7, 4.2,4.3]])
-Xlinsolve = linsolve(X_augmented, [koef1,koef2])
-print(Xlinsolve)
-a = Matrix([koef1,koef2])
-print(a)
-print((-1)**2)
+# koef1,koef2  = symbols('koef1,koef2')
+# X = Matrix([[4.1, 3.9], [4.7, 4.2]])
+# X_augmented = Matrix([[4.1, 3.9,4.0], [4.7, 4.2,4.3]])
+# Xlinsolve = linsolve(X_augmented, [koef1,koef2])
+# print(Xlinsolve)
+# a = Matrix([koef1,koef2])
+# print(a)
+# print((-1)**2)
+
