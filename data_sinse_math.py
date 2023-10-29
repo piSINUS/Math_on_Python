@@ -1,12 +1,12 @@
-from sympy import *
-from sympy.plotting import plot
-from sympy.solvers.inequalities import solve_univariate_inequality
-from sympy.plotting import plot3d
-import numpy as np
-import matplotlib.pyplot as plt
-import numpy
+# from sympy import *
+# from sympy.plotting import plot
+# from sympy.solvers.inequalities import solve_univariate_inequality
+# from sympy.plotting import plot3d
+# import numpy as np
+# import matplotlib.pyplot as plt
+# import numpy
 
-init_printing(use_unicode=False, wrap_line = False, no_global= True)
+# init_printing(use_unicode=False, wrap_line = False, no_global= True)
 
 # # для построения граaиков
 # x = Symbol('x')
@@ -175,3 +175,29 @@ init_printing(use_unicode=False, wrap_line = False, no_global= True)
 # print(a)
 # print((-1)**2)
 
+# dz
+from sympy import *
+import numpy as np
+x,y,z = symbols("x,y,z")
+
+Mse = 1/6*((5*x +7 * y -5*z+47)**2+\
+    (-2*y+2*z-10)**2+\
+    (-4*x-8*y-7*z-63)**2 +\
+    (x+y+2*z+1)**2 +\
+    (2*x - y +2*z+4)**2 +\
+    (4*x+y+4*z+2)**2
+)
+print(Mse.subs({x:0,y:0,z:0}))
+MseX=diff(Mse,x)
+print(MseX)
+MseY=diff(Mse,y)
+print(MseY)
+MseZ=diff(Mse,z)
+print(MseZ)
+step =0.01
+point = np.array([0,0,0])
+grad = np.array([MseX.subs({x:point[0],y:point[1],z:point[2]}),MseY.subs({x:point[0],y:point[1],z:point[2]}),MseZ.subs({x:point[0],y:point[1],z:point[2]})])
+print(grad)
+next_point = point - step * grad
+print(next_point)
+Mse.subs({x:next_point[0],y:next_point[0],z:next_point[0]})
